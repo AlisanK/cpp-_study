@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	int n;
+	cin >> n;
+	int* A = new int[n];
+	
+	int flag = 0;
+	
+
+	for (int i = 0; i < n; i++) {
+		cin >> A[i];
+	}
+
+	int k;
+	cin >> k;
+
+	int left = 0;
+	int right = n - 1;
+	int middle;
+
+	if (A[left] == k) {
+		cout << left ;
+		return 0;
+	}
+	if (A[right] == k) {
+		cout << right ;
+		return 0;
+	}
+
+	while (right - left >= 2) {
+		middle = (right + left) / 2;
+		if (A[middle] == k) {
+			cout << middle ;
+			flag = 1;
+			break;
+		}
+		
+		if (A[middle] > k) {
+			right = middle;
+		}
+		else {
+			left = middle;
+		}
+	}
+
+	if (flag == 0) {
+		cout << "nothing found";
+		
+	}
+
+	delete[] A;
+	return 0;
+}
