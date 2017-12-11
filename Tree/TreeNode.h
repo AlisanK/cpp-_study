@@ -18,8 +18,9 @@ template<class T>
 TreeNode <T>::TreeNode(const T &a)
 {
 	value = a;
-	left = right = 0;
+	parent = left = right = 0;
 }
+
 template <class T>
 T TreeNode <T>::get_value()
 {
