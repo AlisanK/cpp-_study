@@ -10,27 +10,27 @@ public:
 	Queue();                                      
 	void add_node(const T &);    
 
-	Qnode<T>* pop_node(Qnode<T> *);   
-	Qnode<T>* get_head();                         
-	Qnode<T>* get_tail();
-	Qnode<T>* Queue_Dump();
+	T* pop_node();   
+	T* get_head();                         
+	T* get_tail();
+	void Queue_Dump();
 private:
-	Qnode<T> *head;
-	Qnode<T> *tail;
+	Qnode* head;
+	Qnode* tail;
 	int length;
 };
 
 template<class T>
 Queue<T>::Queue()
 {
-	head = tail = 0;
+	head = tail = nullptr;
 	length = 0;
 }
 
 template<class T>
-Queue<T>::add_node(const T &x)
+void Queue<T>::add_node(const T &x)
 {
-	QNode* new_node = new QNode;
+	QNode* new_node = new QNode();
 
 	QNode(new_node);
 
@@ -45,33 +45,32 @@ Queue<T>::add_node(const T &x)
 	}
 	this->tail = new_node;
 	this->length++;
-	return;
 }
 
 
 template<class T>
-Queue<T>* Queue<T>::pop_node(Qnode<T> *value)
+T* Queue<T>::pop_node()
 {
 	this->length--;
-	int value = this->head->value;
+	T value = this->head->value;
 	this->head = this->head->next;
 	return value;
 }
 
 template<class T>
-Qnode<T>* Queue<T>::get_head()
+T* Queue<T>::get_head()
 {
-	return head;
+	return head->value;
 }
 
 template<class T>
-Qnode<T>* Queue<T>::get_tail()
+T* Queue<T>::get_tail()
 {
-	return tail;
+	return tail->value;
 }
 
 template<class T>
-Qnode<T>* Queue<T>::Queue_Dump()
+void Queue<T>::Queue_Dump()
 {
 	QNode* current = Q->head;
 	std::cout << "===============Queue=DUMP==============" << std::endl;
