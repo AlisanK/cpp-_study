@@ -10,7 +10,8 @@ int main() {
 		std::cin >> x;
 		Q.add_node(x);
 	}
-
+	Q.pop_node();
+	Q.Queue_Dump();
 	system("pause");
 	return 0;
 }
