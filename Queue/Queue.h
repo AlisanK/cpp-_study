@@ -10,13 +10,13 @@ public:
 	Queue();                                      
 	void add_node(const T &);    
 
-	T pop_node();   
-	T get_head();                         
-	T get_tail();
+	T* pop_node();   
+	T* get_head();                         
+	T* get_tail();
 	void Queue_Dump();
 private:
-	Qnode<T>* head;
-	Qnode<T>* tail;
+	QNode<T>* head;
+	QNode<T>* tail;
 	int length;
 };
 
@@ -30,11 +30,7 @@ Queue<T>::Queue()
 template<class T>
 void Queue<T>::add_node(const T &x)
 {
-	QNode* new_node = new QNode();
-
-	QNode(new_node);
-
-	new_node->value = x;
+	QNode* new_node = new QNode(x);
 
 	if (this->length == 0) {
 		this->head = new_node;
