@@ -10,7 +10,7 @@ public:
 	Queue();                                      
 	void add_node(const T &);    
 
-	T* pop_node();   
+	T pop_node();   
 	T* get_head();                         
 	T* get_tail();
 	void Queue_Dump();
@@ -30,7 +30,7 @@ Queue<T>::Queue()
 template<class T>
 void Queue<T>::add_node(const T &x)
 {
-	QNode<T>* new_node = new QNode(x);
+	QNode<T>* new_node = new QNode<T>(x);
 
 	if (this->length == 0) {
 		this->head = new_node;
@@ -45,11 +45,11 @@ void Queue<T>::add_node(const T &x)
 
 
 template<class T>
-T* Queue<T>::pop_node()
+T Queue<T>::pop_node()
 {
 	this->length--;
-	T value = this->head->value;
-	this->head = this->head->next;
+	T value = this->head->value_;
+	this->head = this->head->next_;
 	return value;
 }
 
@@ -68,12 +68,12 @@ T* Queue<T>::get_tail()
 template<class T>
 void Queue<T>::Queue_Dump()
 {
-	QNode* current = Q->head;
+	QNode<T>* current = head;
 	std::cout << "===============Queue=DUMP==============" << std::endl;
-	std::cout << "List length:" << Q->length << std::endl;
+	std::cout << "List length:" << length << std::endl;
 	while (current) {
-		QDump(current);
-		current = current->next;
+		current->QNode_Dump();
+		current = current->next_;
 	}
 	std::cout << "===========End=of=Queue=DUMP===========" << std::endl;
 }
