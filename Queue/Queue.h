@@ -10,13 +10,13 @@ public:
 	Queue();                                      
 	void add_node(const T &);    
 
-	T* pop_node();   
-	T* get_head();                         
-	T* get_tail();
+	T pop_node();   
+	T get_head();                         
+	T get_tail();
 	void Queue_Dump();
 private:
-	Qnode* head;
-	Qnode* tail;
+	Qnode<T>* head;
+	Qnode<T>* tail;
 	int length;
 };
 
