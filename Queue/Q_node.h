@@ -2,30 +2,36 @@
 
 template <class T> class QNode
 {
-	friend class Queue<T>;
 public:
 	QNode(const T &);
 	~QNode();
 	T get_value();
-	T QNode_Dump();
+	QNode<T>* get_next();
+	void QNode_Dump();
 
 protected:
-	QNode* next;         
-	T value;           
+	QNode* next_;         
+	T value_;           
 	
 };
 
 template<class T>
 QNode <T>::QNode(const T &a)
 {
-	value = a;
-	next = 0;
+	value_ = a;
+	next_ = 0;
 }
 
 template <class T>
 T QNode <T>::get_value()
 {
-	return value;
+	return value_;
+}
+
+template <typename T>
+QNode<T>* QNode<T>::get_next()
+{
+	return next_;
 }
 
 template <class T>
@@ -35,14 +41,15 @@ QNode <T>::~QNode()
 }
 
 template <class T>
-T QNode <T>::QNode_Dump()
+void QNode <T>::QNode_Dump()
 {
 	std::cout << "===============QNode=DUMP==============" << std::endl;
 
 	std::cout << "Node address: " << this << std::endl;
 
-	std::cout << "Node->value:  " << this->value << std::endl;
-	std::cout << "Node->next:   " << this->next << std::endl;
+	std::cout << "Node->value:  " << value_ << std::endl;
+	std::cout << "Node->next:   " << next_ << std::endl;
 
 	std::cout << "===========End=of=QNode=DUMP===========" << std::endl;
+	return;
 }
