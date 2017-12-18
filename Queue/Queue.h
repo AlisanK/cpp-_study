@@ -30,14 +30,14 @@ Queue<T>::Queue()
 template<class T>
 void Queue<T>::add_node(const T &x)
 {
-	QNode* new_node = new QNode(x);
+	QNode<T>* new_node = new QNode(x);
 
 	if (this->length == 0) {
 		this->head = new_node;
 		this->tail = new_node;
 	}
 	else {
-		this->tail->next = new_node;
+		this->tail->next_ = new_node;
 	}
 	this->tail = new_node;
 	this->length++;
