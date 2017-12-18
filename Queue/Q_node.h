@@ -2,6 +2,7 @@
 
 template <class T> class QNode
 {
+	friend class Queue<T>;
 public:
 	QNode(const T &);
 	~QNode();
@@ -19,7 +20,7 @@ template<class T>
 QNode <T>::QNode(const T &a)
 {
 	value_ = a;
-	next_ = 0;
+	next_ = nullptr;
 }
 
 template <class T>
